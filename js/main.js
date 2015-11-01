@@ -16,6 +16,8 @@ $(function(){
 	var rotating = false;
 	var moving = false;
 	var scaling = false;
+	var griding = false
+	var drawn = false;
 
    $("#start").click(function(){
       drawable = true;
@@ -25,7 +27,7 @@ $(function(){
    $("#end").click(function(){
       drawable = false;
       c.style.cursor = "default";
-
+		drawn = true;
       var polygon = new Polygon(points,ctx);
       polygon.draw();
       polygons.push(polygon);
@@ -35,12 +37,22 @@ $(function(){
    });
 
 	$("#grid").click(function(){
-		drawBoard(c,ctx);
+		if(griding){
+			griding = false;
+			clearScreen(c,ctx);
+			if(drawn)
+				polygons[0].draw();
+		}
+		else{
+			griding = true;
+			drawBoard(c,ctx);
+		}
+
 	});
 
 	$("#canvas").click(function(e){
 
-      if(drawable||rotating||scaling){
+      if(drawable||rotating||scaling||moving){
 			event = e;
 			event = event || window.event;
 			x = event.pageX - c.offsetLeft,
@@ -50,8 +62,13 @@ $(function(){
 			Dot.draw(x,y,ctx);
 
 			if(moving){
-				pivot_move.x = x;
-				pivot_move.y = y;
+				if(polygons.length>=1){
+					clearScreen(c,ctx);
+					if(griding)
+						drawBoard(c,ctx);
+					polygons[0].move(x,y);
+
+				}
 			}
 			if(rotating){
 				pivot.x = x;
@@ -136,6 +153,7 @@ $(function(){
 		drawed = false;
 		drawable=false;
 		rotating = false;
+		drawn = false;
 
 		polygons=[];
 		$("#angle").val("");
