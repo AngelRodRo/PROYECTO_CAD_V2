@@ -94,32 +94,21 @@ $(function(){
 
 	});
 
-
-	$("#draw").click(function(){
-
-		var polygon =  new Polygon(points,ctx);
-		// Dibujar el poligono
-		polygon.draw();
-
-		polygons.push(polygon);
-		points = [];
-
-	});
-
 	$("#rotate").click(function(){
-
-		if(rotating){
-			clearScreen(c,ctx);
-			var angle = $("#angle").val();
-			clearScreen(c,ctx);
-			polygons[0].rotate(pivot,angle);
-			Dot.draw(pivot.x,pivot.y,ctx);
+		if(drawn){
+			if(rotating){
+				clearScreen(c,ctx);
+				var angle = $("#angle").val();
+				clearScreen(c,ctx);
+				polygons[0].rotate(pivot,angle);
+				Dot.draw(pivot.x,pivot.y,ctx);
+			}
+		}
+		else {
+			alert('Por favor termine la edicion');
 		}
 	});
 
-	$("#btn_scaling").click(function(){
-		scaling = true;
-	});
 
 	$("#scale").click(function(){
 
@@ -134,17 +123,20 @@ $(function(){
 	});
 
 	$("#edging").click(function(){
-		var Af = {
-			x: $("#Afx").val(),
-			y: $("#Afy").val()
+		if(drawn){
+			clearScreen(c,ctx);
+			if(griding)
+				drawBoard(c,ctx);
+			var Af = {
+				x: $("#Afx").val(),
+				y: $("#Afy").val()
+			}
+			polygons[0].edging(Af);
+		}else {
+			alert('Por favor termine la edicion antes de continuar');
 		}
-		polygons[0].edging(Af);
 	});
 
-	$("#ref_dot").click(function(){
-		rotating = true;
-
-	});
 
 	$("#clear").click(function(){
 		clearScreen(c,ctx);
@@ -170,5 +162,11 @@ $(function(){
 		}
 	});
 
+	$("#btn_scaling").click(function(){
+		scaling = true;
+	});
 
+	$("#ref_dot").click(function(){
+		rotating = true;
+	});
 });
