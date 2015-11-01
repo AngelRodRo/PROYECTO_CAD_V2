@@ -1,174 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>PROYECTO DE DISEÑO ASISTIDO POR COMPUTADORA</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/model/dot.js" ></script>
+  <script type="text/javascript" src="js/model/line.js" ></script>
+  <script type="text/javascript" src="js/model/polygon.js" ></script>
+  <script type="text/javascript" src="js/canvas.js" ></script>
+  <script type="text/javascript" src="js/main.js" ></script>
+  <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+</head>
 
-<html>
-   <head>
-      <meta charset="utf-8">
-      <title>PROYECTO DE DISEÑO ASISTIDO POR COMPUTADORA</title>
-      <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-      <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
-      <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-      <script type="text/javascript" src="js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="js/model/dot.js" ></script>
-      <script type="text/javascript" src="js/model/line.js" ></script>
-      <script type="text/javascript" src="js/model/polygon.js" ></script>
-      <script type="text/javascript" src="js/canvas.js" ></script>
-      <script type="text/javascript" src="js/main.js" ></script>
-      <style media="screen">
-
-      </style>
-   </head>
-   <body>
-      <nav>
-        <div class="wrapper">
-          <ul id="menu" class="clearfix">
-           <li><a href="#">Rectas</a>
-             <ul>
-                <li><a href="#">Vertical</a></li>
-                <li><a href="#">Horizontal</a></li>
-                <li><a href="#">Diagonal</a></li>
-                <li class="green"><a href="#">Arbitraria</a>
-                  <ul>
-                    <li><a href="#">Método Directo</a></li>
-                    <li><a href="#">ADD Simple</a></li>
-                    <li><a href="#">ADD Entero</a></li>
-                  </ul>
-                </li>
-             </ul>
-           </li>
-           <li><a href="#">Círculos</a>
-             <ul>
-                <li><a href="#">Implícita</a></li>
-                <li><a href="#">Paramétrica Polar</a></li>
-                <li><a href="#">Incremental</a></li>
-             </ul>
-           <li><a href="#">Recortes</a>
-             <ul>
-                <li><a href="#">Líneas</a></li>
-                <li><a href="#">Polígonos</a></li>
-             </ul>
-           </li>
-             <li><a href="#">Transformaciones</a>
-             <ul>
-                <li><a href="#">Rotación</a></li>
-                <li><a href="#">Traslación</a></li>
-                <li><a href="#">Escalamiento</a></li>
-                <li><a href="#">Afilamiento</a></li>
-             </ul>
-           </li>
+<body>
+  <nav>
+    <div class="wrapper">
+      <ul id="menu" class="clearfix">
+        <li><a href="#">Rectas </a>
+          <ul>
+            <li><a href="#">Vertical</a></li>
+            <li><a href="#">Horizontal</a></li>
+            <li><a href="#">Diagonal</a></li>
+            <li class="green"><a href="#">Arbitraria</a>
+              <ul>
+                <li><a href="#">Método Directo</a></li>
+                <li><a href="#">ADD Simple</a></li>
+                <li><a href="#">ADD Entero</a></li>
+              </ul>
+            </li>
           </ul>
-        </div>
-      </nav>
-      <div class="container">
-            <div class="row" style="margin:40px;">
-               <div class="col-lg-8" style="position: static;">
-                  <canvas id="canvas" style="margin:0;padding:0; " width="600" height="300">
-                  </canvas>
+        </li>
+        <li><a href="#">Círculos</a>
+          <ul>
+            <li><a href="#">Implícita</a></li>
+            <li><a href="#">Paramétrica Polar</a></li>
+            <li><a href="#">Incremental</a></li>
+          </ul>
+        <li><a href="#">Recortes</a>
+          <ul>
+            <li><a href="#">Líneas</a></li>
+            <li><a href="#">Polígonos</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Transformaciones</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row"  style="padding: 60px;">
+      <div class="col-lg-6" style="position: static;">
+
+        <canvas id="canvas" style="margin-left:80px;padding:0; border: 2px solid black; " width="500" height="500">
+        </canvas>
+
+      </div>
+
+      <div class="col-lg-3">
+        
+        <div class="row">
+          <fieldset>
+            <legend>Cuadrícula</legend>
+            <div class="col-lg-12">
+              <div id="grid" class="btn btn-warning">
+                Ver cuadricula
+              </div>
+            </div>
+          <fieldset>
+        </div></br> 
+
+        <div class="row">
+          <fieldset>
+            <legend>Traslación</legend>
+            <div class="col-lg-12">
+              <label>Trasladar</label>&nbsp;&nbsp;&nbsp;&nbsp;
+              <div class="btn btn-warning glyphicon glyphicon-move" id="btn_move">
+              </div>
+            </div>
+          </fieldset>
+        </div></br>  
+
+        <div class="row">
+          <fieldset>
+            <legend>Escalamiento</legend>
+            <div class="col-lg-3">
+              <input type="text" class="form-control" placeholder="Ex" id="Ex" name="name" value="">
+            </div>
+            <div class="col-lg-3">
+              <input type="text" class="form-control" placeholder="Ey" id="Ey" name="name" value="">
+            </div>
+            <div class="col-lg-3">
+              <div id="btn_scaling" class="btn btn-warning glyphicon glyphicon-record">
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="btn btn-warning glyphicon glyphicon-resize-small" id="scale">
+              </div>
+            </div>
+          </fieldset>
+        </div></br> 
+
+        <div class="row">
+          <fieldset>
+            <legend>Reflexión</legend>
+          </fieldset>
+        </div>      
+
+      </div>
+
+      <div class="col-lg-3">
+
+        <div class="row">
+          <fieldset>
+            <legend>Trazado</legend>
+            <div class="col-lg-6">
+              <label>Iniciar</label>&nbsp;&nbsp;&nbsp;&nbsp;
+              <div class="btn btn-primary glyphicon glyphicon-pencil" id="start"></div>
+            </div>
+            <div class="col-lg-6">
+              <label>Terminar</label>&nbsp;&nbsp;&nbsp;&nbsp;
+              <div class=" btn btn-danger glyphicon glyphicon-remove" id="end"></div>
+            </div>
+          </fieldset>
+        </div></br>
+
+        <div class="row">
+          <fieldset>
+            <legend>Rotación</legend>
+            <div class="col-lg-3">
+              <div class="btn btn-warning" id="ref_dot">
+                Pivote
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <input type="text" class="form-control" placeholder="Angulo" id="angle" name="name" value="">
+            </div>
+            <div class="col-lg-4">
+              <div class="btn btn-primary glyphicon glyphicon-refresh" id="rotate"></div>
+            </div>
+          </fieldset>
+        </div></br>
+
+        <div class="row">
+          <fieldset>
+            <legend>Afilamiento</legend>
+            <div class="col-lg-4">
+              <input type="text" class="form-control" placeholder="AFx" id="Afx" name="name" value="">
+            </div>
+            <div class="col-lg-4">
+              <input type="text" class="form-control" placeholder="AFy" id="Afy" name="name" value="">
+            </div>
+            <div class="col-lg-4">
+              <div class="btn btn-warning glyphicon glyphicon-export" id="edging">
+              </div>
+            </div>
+          </fieldset>
+        </div></br>
+
+        <div class="row">
+          <fieldset>
+            <legend>Limpiar</legend>
+            <div class="col-lg-12">
+               <div id="clear" class="btn btn-danger">
+                  Limpiar
                </div>
-               <div class="col-lg-4">
-                  <div id="editing" class="container">
-                     <div class="row">
-                        <div class="col-lg-12">
-                           <div id="grid" class="btn btn-warning">
-                              Ver cuadricula
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-lg-2">
-                           <div class="btn btn-primary glyphicon glyphicon-pencil" id="start"></div>
-                        </div>
-                        <div class="col-lg-2">
-                           <div class="btn btn-danger glyphicon glyphicon-remove" id="end"></div>
-                        </div>
-                     </div>
-                  </div>
-                  <div id="rotating" class="container">
-                     <div class="row">
-                        <div class="col-lg-12">
-                           <label for="">Girar objeto</label>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-lg-2">
-                           <input type="text" class="form-control" placeholder="Angulo para girar" id="angle" name="name" value="">
-                        </div>
-                        <div class="col-lg-4">
-                           <div class="btn btn-primary glyphicon glyphicon-refresh" id="rotate"></div>
-                        </div>
-                        <div class="col-lg-12">
-                           <div class="btn btn-warning glyphicon glyphicon-record" id="ref_dot">
-                              Escoger punto de referencia
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-lg-12">
-                        <label for="">Trasladar objeto</label>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-lg-4">
-                        <div class="btn btn-warning glyphicon glyphicon-move" id="btn_move">
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-lg-12">
-                        <label for="">Escalar objeto</label>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-lg-4">
-                        <input type="text" class="form-control" placeholder="Ex" id="Ex" name="name" value="">
+            </div>
+          </fieldset>
+        </div>
 
-                     </div>
-                     <div class="col-lg-4">
-                        <input type="text" class="form-control" placeholder="Ey" id="Ey" name="name" value="">
+      </div>
 
-                     </div>
-                     <div class="col-lg-4">
-                        <div id="btn_scaling" class="btn btn-warning glyphicon glyphicon-record">
-                        </div>
-                     </div>
-
-                     <div class="col-lg-4">
-                        <div class="btn btn-warning glyphicon glyphicon-resize-small" id="scale">
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-lg-12">
-                        <label for="">Afilar objeto</label>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-lg-4">
-                        <input type="text" class="form-control" placeholder="AFx" id="Afx" name="name" value="">
-                     </div>
-                     <div class="col-lg-4">
-                        <input type="text" class="form-control" placeholder="AFy" id="Afy" name="name" value="">
-                     </div>
-                     <div class="col-lg-4">
-                        <div class="btn btn-warning glyphicon glyphicon-export" id="edging">
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="clear">
-                        <div class="col-lg-12">
-                           <div id="clear" class="btn btn-danger">
-                              Limpiar
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+    </div>
+  </div>
 
 <script type="text/javascript">
 $(function(){
   $('a[href="#"]').on('click', function(e){
     e.preventDefault();
   });
-
+  
   $('#menu > li').on('mouseover', function(e){
     $(this).find("ul:first").show();
     $(this).find('> a').addClass('active');
@@ -176,7 +191,7 @@ $(function(){
     $(this).find("ul:first").hide();
     $(this).find('> a').removeClass('active');
   });
-
+  
   $('#menu li li').on('mouseover',function(e){
     if($(this).has('ul').length) {
       $(this).parent().addClass('expanded');
