@@ -77,9 +77,13 @@ Polygon.prototype.rotate=function(pivot,angle){
 
 }
 
-Polygon.prototype.scale = function(E){
+Polygon.prototype.scale = function(E,pivot){
 
 	var points = this.points;
+	var pointsprimax3 = [];
+	var xprima;
+	var xprimax3;
+	var xprimax2;
 
 	for (var i = 0; i < this.points.length; i++) {
 
