@@ -22,18 +22,24 @@ $(function(){
    $("#start").click(function(){
       drawable = true;
       c.style.cursor = "crosshair";
+		$(this).addClass("active");
    });
 
    $("#end").click(function(){
-      drawable = false;
-      c.style.cursor = "default";
-		drawn = true;
-      var polygon = new Polygon(points,ctx);
-      polygon.draw();
-      polygons.push(polygon);
-		console.log(polygon);
-      points = [];
-
+		if(drawable){
+	      drawable = false;
+	      c.style.cursor = "default";
+			drawn = true;
+	      var polygon = new Polygon(points,ctx);
+	      polygon.draw();
+	      polygons.push(polygon);
+			console.log(polygon);
+	      points = [];
+			$("#start").removeClass("active");
+		}
+		else {
+			alert('Por favor inicie la edicion');
+		}
    });
 
 	$("#grid").click(function(){
@@ -98,8 +104,9 @@ $(function(){
 		if(drawn){
 			if(rotating){
 				clearScreen(c,ctx);
+				if(griding)
+					drawBoard(c,ctx);
 				var angle = $("#angle").val();
-				clearScreen(c,ctx);
 				polygons[0].rotate(pivot,angle);
 				Dot.draw(pivot.x,pivot.y,ctx);
 			}
@@ -149,16 +156,36 @@ $(function(){
 
 		polygons=[];
 		$("#angle").val("");
+		$("#Ex").val("");
+		$("#Ey").val("");
+		$("#Afx").val("");
+		$("#Afy").val("");
 	});
 
+	$("#clearFields").click(function(){
+		$("#Ex").val("");
+		$("#Ey").val("");
+		$("#Afx").val("");
+		$("#Afy").val("");
+		$("#angle").val("");
+	});
+
+
 	$("#btn_move").click(function(){
-		if(!moving){
-			c.style.cursor = "move";
-			moving = true;
+		if(drawn){
+			if(!moving){
+				c.style.cursor = "move";
+				moving = true;
+				$(this).addClass("active");
+			}
+			else{
+				c.style.cursor = "default";
+				moving = false;
+				$(this).removeClass("active");
+			}
 		}
-		else{
-			c.style.cursor = "default";
-			moving = false;
+		else {
+			alert('Por favor termine la edicion antes de continuar');
 		}
 	});
 
