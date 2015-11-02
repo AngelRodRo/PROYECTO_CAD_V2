@@ -18,6 +18,21 @@ function drawBoard(c,context){
     context.stroke();
 }
 
+function drawPlane(c,context)
+{
+    context.moveTo(275,0);
+    context.lineTo(275,500);
+
+    context.strokeStyle = "#9A9A9A";
+    context.stroke();
+
+    context.moveTo(0,250);
+    context.lineTo(550,250);
+
+    context.strokeStyle = "#9A9A9A";
+    context.stroke();
+}
+
 
 function convert(y)
 {

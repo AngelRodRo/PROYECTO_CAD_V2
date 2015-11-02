@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="utf-8">
+      <title>PROYECTO DE DISEÑO ASISTIDO POR COMPUTADORA</title>
+      <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
+      <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+      <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/model/dot.js" ></script>
+      <script type="text/javascript" src="js/model/line.js" ></script>
+      <script type="text/javascript" src="js/model/polygon.js" ></script>
+      <script type="text/javascript" src="js/canvas.js" ></script>
+      <script type="text/javascript" src="js/main.js" ></script>
+       <script type="text/javascript" src="js/metodos.js" ></script>
+      <style media="screen">
+         #start.active{
+            background-color: #286090;
+         }
+
+         #btn_move.active{
+            background-color: #286090;
+         }
+
+
+      </style>
+   </head>
+   <body>
+      <nav>
+        <div class="wrapper">
+          <ul id="menu" class="clearfix">
+           <li><a href="rectas.html">Rectas</a>
+             <ul>
+                <li class="blue"><a href="arbitraria.html">Arbitraria</a></li>
+             </ul>
+           </li>
+           <li><a href="circulos.html">Círculos</a>
+           </li>>
+           <li><a href="recortes.html">Recortes</a></li>
+           <li><a href="transformaciones.html">Transformaciones</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="row"  style="padding: 60px;">
+          <div class="col-lg-6" style="position: static;">
+            <canvas id="canvas" style="padding:0; border: 2px solid black; " width="550" height="500">
+            </canvas>
+          </div>
+
+          <div class="col-lg-3">
+
+            <div class="row">
+              <fieldset>
+                <legend>Cuadrícula</legend>
+                <div class="col-lg-12">
+                  <div id="grid" class="btn btn-warning">
+                    Ver cuadricula
+                  </div>
+                </div>
+              </fieldset>
+            </div></br>
+
+            <div class="row">
+              <fieldset>
+                <legend>Traslación</legend>
+                <div class="col-lg-12">
+                  <label>Trasladar</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="btn btn-primary glyphicon glyphicon-move" id="btn_move">
+                  </div>
+                </div>
+              </fieldset>
+            </div></br>
+
+            <div class="row">
+              <fieldset>
+                <legend>Escalamiento</legend>
+                <div class="col-lg-3">
+                  <input type="text" class="form-control" placeholder="Ex" id="Ex" name="name" value="">
+                </div>
+                <div class="col-lg-3">
+                  <input type="text" class="form-control" placeholder="Ey" id="Ey" name="name" value="">
+                </div>
+                <div class="col-lg-3">
+                  <div id="btn_scaling" class="btn btn-success glyphicon glyphicon-record">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="btn btn-warning glyphicon glyphicon-resize-small" id="scale">
+                  </div>
+                </div>
+              </fieldset>
+            </div></br>
+
+            <div class="row">
+              <fieldset>
+                <legend>Reflexión</legend>
+                  <div class="col-lg-3">
+                    <div id="plane" class="btn btn-warning">
+                        Plano C.
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                      <div id="reflexion_x" class="btn btn-primary">
+                          Ref. X
+                      </div>
+                  </div>
+                  <div class="col-lg-3">
+                      <div id="reflexion_y" class="btn btn-primary">
+                          Ref. Y
+                      </div>
+                  </div>
+                  <div class="col-lg-3">
+                      <div id="reflexion_0" class="btn btn-primary">
+                          Ref. 0
+                      </div>
+                  </div>
+              </fieldset>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3">
+
+            <div class="row">
+              <fieldset>
+                <legend>Trazado</legend>
+                <div class="col-lg-6">
+                  <label>Iniciar</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="btn btn-primary glyphicon glyphicon-pencil" id="start"></div>
+                </div>
+                <div class="col-lg-6">
+                  <label>Terminar</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class=" btn btn-danger glyphicon glyphicon-remove" id="end"></div>
+                </div>
+              </fieldset>
+            </div></br>
+
+            <div class="row">
+              <fieldset>
+                <legend>Rotación</legend>
+                <div class="col-lg-3">
+                  <div class="btn btn-warning" id="ref_dot">
+                    Pivote
+                  </div>
+                </div>
+                <div class="col-lg-5">
+                  <input type="text" class="form-control" placeholder="Angulo" id="angle" name="name" value="">
+                </div>
+                <div class="col-lg-4">
+                  <div class="btn btn-primary glyphicon glyphicon-refresh" id="rotate"></div>
+                </div>
+              </fieldset>
+            </div></br>
+
+            <div class="row">
+              <fieldset>
+                <legend>Afilamiento</legend>
+                <div class="col-lg-4">
+                  <input type="text" class="form-control" placeholder="AFx" id="Afx" name="name" value="">
+                </div>
+                <div class="col-lg-4">
+                  <input type="text" class="form-control" placeholder="AFy" id="Afy" name="name" value="">
+                </div>
+                <div class="col-lg-4">
+                  <div class="btn btn-info glyphicon glyphicon-export" id="edging">
+                  </div>
+                </div>
+              </fieldset>
+            </div></br>
+
+            <div class="row">
+              <fieldset>
+                <legend>Limpiar</legend>
+                <div class="col-lg-6">
+                   <div id="clearFields" class="btn btn-warning">
+                      Limpiar campos
+                   </div>
+                </div>
+                <div class="col-lg-6">
+                   <div id="clear" class="btn btn-danger">
+                      Limpiar todo
+                   </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <script type="text/javascript">
+    $(function(){
+      $('a[href="#"]').on('click', function(e){
+        e.preventDefault();
+      });
+
+      $('#menu > li').on('mouseover', function(e){
+        $(this).find("ul:first").show();
+        $(this).find('> a').addClass('active');
+      }).on('mouseout', function(e){
+        $(this).find("ul:first").hide();
+        $(this).find('> a').removeClass('active');
+      });
+
+      $('#menu li li').on('mouseover',function(e){
+        if($(this).has('ul').length) {
+          $(this).parent().addClass('expanded');
+        }
+        $('ul:first',this).parent().find('> a').addClass('active');
+        $('ul:first',this).show();
+      }).on('mouseout',function(e){
+        $(this).parent().removeClass('expanded');
+        $('ul:first',this).parent().find('> a').removeClass('active');
+        $('ul:first', this).hide();
+      });
+    });
+    </script>
+   </body>
+</html>

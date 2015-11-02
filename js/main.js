@@ -16,8 +16,12 @@ $(function(){
 	var rotating = false;
 	var moving = false;
 	var scaling = false;
-	var griding = false
+	var griding = false;
 	var drawn = false;
+	var planing = false;
+	var reflect_x = false;
+	var reflect_y = false;
+	var reflect_cero = false;
 
    $("#start").click(function(){
       drawable = true;
@@ -52,6 +56,18 @@ $(function(){
 		else{
 			griding = true;
 			drawBoard(c,ctx);
+		}
+
+	});
+
+	$("#plane").click(function(){
+		if(planing){
+			planing = false;
+			clearScreen(c,ctx);
+		}
+		else{
+			planing = true;
+			drawPlane(c,ctx);
 		}
 
 	});
@@ -124,7 +140,7 @@ $(function(){
 			var E = {
 				x: $("#Ex").val(),
 				y: $("#Ey").val()
-			}
+			};
 			polygons[0].scale(E,pivot_scale);
 		}
 	});
@@ -137,10 +153,46 @@ $(function(){
 			var Af = {
 				x: $("#Afx").val(),
 				y: $("#Afy").val()
-			}
+			};
 			polygons[0].edging(Af);
 		}else {
 			alert('Por favor termine la edicion antes de continuar');
+		}
+	});
+
+	$("#reflexion_x").click(function(){
+		if(planing){
+			reflect_x = true;
+			clearScreen(c,ctx);
+			drawPlane(c,ctx);
+			polygons[0].reflect(reflect_x,reflect_y,reflect_cero);
+			reflect_x = false;
+		}else {
+			alert('Por favor, muestre el plano cartesiano');
+		}
+	});
+
+	$("#reflexion_y").click(function(){
+		if(planing){
+			reflect_y = true;
+			clearScreen(c,ctx);
+			drawPlane(c,ctx);
+			polygons[0].reflect(reflect_x,reflect_y,reflect_cero);
+			reflect_y = false;
+		}else {
+			alert('Por favor, muestre el plano cartesiano');
+		}
+	});
+
+	$("#reflexion_0").click(function(){
+		if(planing){
+			reflect_cero = true;
+			clearScreen(c,ctx);
+			drawPlane(c,ctx);
+			polygons[0].reflect(reflect_x,reflect_y,reflect_cero);
+			reflect_cero = false;
+		}else {
+			alert('Por favor, muestre el plano cartesiano');
 		}
 	});
 
