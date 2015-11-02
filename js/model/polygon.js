@@ -131,20 +131,30 @@ Polygon.prototype.reflect = function(x,y,cero){
 	if(x)
 	{
 		for (var i = 0; i < this.points.length; i++) {
+			this.points[i].y = this.points[i].y-250;
 			this.points[i].y = this.points[i].y*(-1);
+			this.points[i].y = this.points[i].y+250;
+			//this.points[i].x = this.points[i].x-275;
 		}
 	}
 	if(y)
 	{
 		for (var i = 0; i < this.points.length; i++) {
+			this.points[i].x = this.points[i].x-275;
 			this.points[i].x = this.points[i].x*(-1);
+			this.points[i].x = this.points[i].x+275;
+			//this.points[i].y = this.points[i].y-250;
 		}
 	}
 	if(cero)
 	{
 		for (var i = 0; i < this.points.length; i++) {
+			this.points[i].x = this.points[i].x-275;
 			this.points[i].x = this.points[i].x*(-1);
+			this.points[i].x = this.points[i].x+275;
+			this.points[i].y = this.points[i].y-250;
 			this.points[i].y = this.points[i].y*(-1);
+			this.points[i].y = this.points[i].y+250;
 		}
 	}
 
