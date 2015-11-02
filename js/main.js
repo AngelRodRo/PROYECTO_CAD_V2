@@ -95,7 +95,7 @@ $(function(){
 
       }
       else {
-         alert('Si quiere dibujar por favor inicie la edicion');
+         alert('Si quiere dibujar por favor inicie la edicion o realize alguna accion');
       }
 
 	});
@@ -194,6 +194,10 @@ $(function(){
 	});
 
 	$("#ref_dot").click(function(){
-		rotating = true;
+		if(!moving)
+			rotating = true;
+		else {
+			alert('Desactive el movimiento por favor');
+		}
 	});
 });
