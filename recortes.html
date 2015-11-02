@@ -36,17 +36,17 @@
             <div class="row">
                 <fieldset>
                     <legend>Botones</legend>
-                    <div class="col-lg-4">
-                        <div onclick="dibujar()" class="btn btn-default">
+                    <div class="col-lg-2">
+                        <div onclick="dibujar()" class="btn btn-primary">
                             Dibujar
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-2">
                         <div onclick="recortar()" class="btn btn-warning">
                             Recortar
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-2">
                         <div onclick="limpiar()" class="btn btn-danger">
                             Limpiar
                         </div>
@@ -165,17 +165,17 @@
         //EJEX1
 
         ctxlienzo.beginPath();
-        ctxlienzo.moveTo(350,150);
+        ctxlienzo.moveTo(400,150);
         ctxlienzo.lineTo(150,150);
         ctxlienzo.lineTo(150,350);
-        ctxlienzo.lineTo(350,350);
+        ctxlienzo.lineTo(400,350);
         ctxlienzo.closePath();
         ctxlienzo.stroke();
 
 
         xmin = 150;
         ymin = 150;
-        xmax = 350;
+        xmax = 400;
         ymax = 350;
     }
 

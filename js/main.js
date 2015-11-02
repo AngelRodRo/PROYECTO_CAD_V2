@@ -1,7 +1,7 @@
 $(function(){
 
-	var points = [],
-      polygons = [];
+	var points = [];
+   var polygons = [];
 	var c = $("#canvas").get(0);
 	var ctx = c.getContext('2d');
    var x,y;
@@ -22,6 +22,7 @@ $(function(){
 	var reflect_x = false;
 	var reflect_y = false;
 	var reflect_cero = false;
+	var transform = new Object();
 
    $("#start").click(function(){
       drawable = true;
@@ -85,11 +86,15 @@ $(function(){
 
 			if(moving){
 				if(polygons.length>=1){
+					transform.move = [ polygons[0].points[0].x,polygons[0].points[0].y ];
+
 					clearScreen(c,ctx);
 					if(griding)
 						drawBoard(c,ctx);
 					polygons[0].move(x,y);
+					var _points = [x,y];
 
+					console.log(transform.move);
 				}
 			}
 			if(rotating){
@@ -123,8 +128,9 @@ $(function(){
 				if(griding)
 					drawBoard(c,ctx);
 				var angle = $("#angle").val();
-				polygons[0].rotate(pivot,angle);
 				Dot.draw(pivot.x,pivot.y,ctx);
+				polygons[0].rotate(pivot,angle);
+				transform.rotate = [pivot,angle];
 			}
 		}
 		else {
@@ -142,6 +148,8 @@ $(function(){
 				y: $("#Ey").val()
 			};
 			polygons[0].scale(E,pivot_scale);
+			transform.scale = [E,pivot_scale];
+
 		}
 	});
 
@@ -155,6 +163,7 @@ $(function(){
 				y: $("#Afy").val()
 			};
 			polygons[0].edging(Af);
+			transform.edge = Af;
 		}else {
 			alert('Por favor termine la edicion antes de continuar');
 		}
@@ -252,4 +261,51 @@ $(function(){
 			alert('Desactive el movimiento por favor');
 		}
 	});
+
+	$("#reverse_move").click(function(){
+
+		clearScreen(c,ctx);
+		if(griding)
+			drawBoard(c,ctx);
+
+		polygons[0].move(transform.move[0],transform.move[1]);
+	});
+
+	$("#reverse_scale").click(function(){
+
+		clearScreen(c,ctx);
+		if(griding)
+			drawBoard(c,ctx);
+
+		var x = transform.scale[0].x;
+		var y = transform.scale[0].y;
+
+		polygons[0].scale(
+			{
+				x:1/x,
+				y:1/y
+			}
+			,transform.scale[1]);
+	});
+
+	$("#reverse_rotate").click(function(){
+		clearScreen(c,ctx);
+		if(griding)
+			drawBoard(c,ctx);
+
+		polygons[0].rotate(transform.rotate[0],-transform.rotate[1]);
+	});
+
+	$("#reverse_edge").click(function(){
+		clearScreen(c,ctx);
+		if(griding)
+			drawBoard(c,ctx);
+		polygons[0].edging(
+			{
+				x:-transform.edge.x,
+				y:-transform.edge.y
+			}
+		);
+	});
+
 });

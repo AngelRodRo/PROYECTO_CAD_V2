@@ -31,7 +31,7 @@ $(function(){
 		var y1=$("#md_numy1").val();
 		var x2=$("#md_numx2").val();
 		var y2=$("#md_numy2").val();
-		
+
 		metodo_directo(x1,y1,x2,y2);
 	});
 
@@ -40,7 +40,7 @@ $(function(){
 		var y1=$("#adds_numy1").val();
 		var x2=$("#adds_numx2").val();
 		var y2=$("#adds_numy2").val();
-		
+
 		add_simple(x1,y1,x2,y2);
 	});
 
@@ -49,7 +49,7 @@ $(function(){
 		var y1=$("#adde_numy1").val();
 		var x2=$("#adde_numx2").val();
 		var y2=$("#adde_numy2").val();
-		
+
 		add_entero(x1,y1,x2,y2);
 
 	});
@@ -61,7 +61,7 @@ $(function(){
         var xc=$("#c_numxc").val();
         var yc=$("#c_numyc").val();
         var r=$("#c_radio").val();
-        
+
         draw_circle(xc,yc,r);
     });
 
@@ -71,7 +71,7 @@ $(function(){
         var xc=$("#cp_numxc").val();
         var yc=$("#cp_numyc").val();
         var r=$("#cp_radio").val();
-        
+
         draw_parameters_polar(xc,yc,r);
     });
 
@@ -80,8 +80,8 @@ $(function(){
         var y=$("#cpi_numy").val();
         var xc=$("#cpi_numxc").val();
         var yc=$("#cpi_numyc").val();
-        var r=$("cpi_radio").val();
-        
+        var r=$("#cpi_radio").val();
+
         draw_parameters_increment(xc,yc,r);
     });
 
@@ -101,7 +101,7 @@ $(function(){
         var X1 = [xmin,xmax];
         var Y1 = [ymin,ymax];
 
-        var X2 = [x2init,x2end];        
+        var X2 = [x2init,x2end];
         var Y2 = [y2init,y2end];
 
         draw_square(xmin,ymin,xmax,ymax);
@@ -135,7 +135,7 @@ function algorith_cohen(X1,Y1,X2,Y2){
     var xmax;
     var ymax;
 
-    
+
 
         var x1;
         var x2;
@@ -166,7 +166,7 @@ function algorith_cohen(X1,Y1,X2,Y2){
             ctx.lineTo(x2,y2);
             ctx.stroke();
             ctx.closePath();
-        }   
+        }
 
         function ubicar(a,b)
         {
@@ -245,7 +245,7 @@ function algorith_cohen(X1,Y1,X2,Y2){
 
         function recortar()
         {
-            
+
             if (x1>=xmin && x1<=xmax && y1>=ymin && y1<=ymax && x2>=xmin && x2<=xmax && y2>=ymin && y2<=ymax)
             {
                 limpiarGrafico();
@@ -264,7 +264,7 @@ function algorith_cohen(X1,Y1,X2,Y2){
             }
             else //interseccion = 0 .. significa que hay que recortar.
             {
-                
+
                 if (bandera == 0)
                 {
                     limpiarGrafico();
@@ -396,7 +396,7 @@ function algorith_cohen(X1,Y1,X2,Y2){
                     recta(nuevo_x1,nuevo_y1,nuevo_x2,nuevo_y2);
                 }
             }
-        } 
+        }
 
 }
 
@@ -422,14 +422,14 @@ function limpiar()
 function dibujarpunto(x1,y1,x2)
 {
 
-    x1 = Number(x1); 
-    y1 = Number(y1); 
+    x1 = Number(x1);
+    y1 = Number(y1);
     x2 = Number(x2);
 
     if (x1>=0 && x1<=500 && y1>=0 && y1<=500 && x2>=0 && x2<=500)
     {
-        x1 = sumar(x1); 
-        y1 = sumar(y1); 
+        x1 = sumar(x1);
+        y1 = sumar(y1);
         x2 = sumar(x2);
         var canvas = $("#canvas").get(0);
         var i = 0;
@@ -463,18 +463,18 @@ function dibujarpunto(x1,y1,x2)
         $("#numy1").value = "";
         $("#numx2").value = "";
     }
-}      
+}
 
 function dibujar_linea_vertical(x1,y1,y2)
 {
-    x1 = Number(x1); 
-    y1 = Number(y1); 
+    x1 = Number(x1);
+    y1 = Number(y1);
     y2 = Number(y2);
 
     if (x1>=-0 && x1<=500 && y1>=0 && y1<=550 && y2>=0 && y2<=500)
     {
-        x1 = sumar(x1); 
-        y1 = sumar(y1); 
+        x1 = sumar(x1);
+        y1 = sumar(y1);
         y2 = sumar(y2);
 
         var i = 0;
@@ -510,21 +510,21 @@ function dibujar_linea_vertical(x1,y1,y2)
         document.getElementById("numy1").value = "";
         document.getElementById("numy2").value = "";
     }
-}    
+}
 
 function dibujar_linea_diagonal(x1,y1,x2)
 {
 
-    x1 = Number(x1); 
+    x1 = Number(x1);
     y1 = Number(y1);
-    x2 = Number(x2); 
+    x2 = Number(x2);
 
     if (x1>=0 && x1<=500 && y1>=0 && y1<=500 && x2>=0 && x2<=500)
     {
 
-        x1 = sumar(x1); 
+        x1 = sumar(x1);
         y1 = sumar(y1);
-        x2 = sumar(x2); 
+        x2 = sumar(x2);
         var i = 0;
 
         if (x1<x2)
@@ -565,19 +565,19 @@ function metodo_directo(x1,y1,x2,y2)
     x1 = Number(x1);
     y1 = Number(y1);
     x2 = Number(x2);
-    y2 = Number(y2); 
+    y2 = Number(y2);
 
     if (x1>=0 && x1<=500 && y1>=0 && y1<=500 && x2>=0 && x2<=500 && y2>=0 && y2<=500)
     {
         var m = (y2-y1)/(x2-x1);
         var b = (y1) - m*(x1);
-        
-        var i = 0; 
+
+        var i = 0;
 
         if (x1<x2)
         {
             while (x1+i<=x2)
-            {  
+            {
                 var y = m * (x1+i) + b;
                 y = Math.round(y);
                 var canvas = document.getElementById("canvas");
@@ -586,9 +586,9 @@ function metodo_directo(x1,y1,x2,y2)
                 x = sumar(x1+i);
                 y = sumar(y);
                 ctx.fillRect(x,y,1,1);
-                i=i+1;   
-            } 
-        } 
+                i=i+1;
+            }
+        }
         else
         {
             while (x1-i>=x2)
@@ -613,14 +613,14 @@ function metodo_directo(x1,y1,x2,y2)
         document.getElementById("numx2").value = "";
         document.getElementById("numy2").value = "";
     }
-}      
+}
 
 function add_simple(x1,y1,x2,y2)
 {
     x1 = Number(x1);
     y1 = Number(y1);
     x2 = Number(x2);
-    y2 = Number(y2); 
+    y2 = Number(y2);
 
     if (x1>=0 && x1<=500 && y1>=0 && y1<=500 && x2>=0 && x2<=580 && y2>=0 && y2<=500)
     {
@@ -629,13 +629,13 @@ function add_simple(x1,y1,x2,y2)
         var m = dif_y / dif_x;
 
         var i = 0;
-        
+
         if (Math.abs(m) < 1)
         {
         	if (x1<x2)
         	{;
         		while (x1+i<=x2)
-                {  
+                {
                     var x = x1 + i;
                     var y = y1 + m;
                     y1 = y;
@@ -646,13 +646,13 @@ function add_simple(x1,y1,x2,y2)
                     x = sumar(x);
                     y = sumar(y);
                     ctx.fillRect(x,y,1,1);
-                    i=i+1;   
-                } 
+                    i=i+1;
+                }
         	}
         	else
         	{
         		while (x1-i>=x2)
-                {  
+                {
                     var x = x1 - i;
                     var y = y1 - m;
                     y1 = y;
@@ -663,8 +663,8 @@ function add_simple(x1,y1,x2,y2)
                     x = sumar(x);
                     y = sumar(y);
                     ctx.fillRect(x,y,1,1);
-                    i=i+1;   
-                } 
+                    i=i+1;
+                }
         	}
         }
         else
@@ -672,7 +672,7 @@ function add_simple(x1,y1,x2,y2)
         	if (y1<y2)
         	{
         		while (y1+i<=y2)
-                {  
+                {
                     var x = x1 + 1/m;
                     var y = y1 + i;
                     x1 = x;
@@ -683,13 +683,13 @@ function add_simple(x1,y1,x2,y2)
                     x = sumar(x);
                     y = sumar(y);
                     ctx.fillRect(x,y,1,1);
-                    i=i+1;   
-                } 
+                    i=i+1;
+                }
         	}
         	else
         	{
         		while (y1-i>=y2)
-                {  
+                {
                     var x = x1 - 1/m;
                     var y = y1 - i;
                     x1 = x;
@@ -700,8 +700,8 @@ function add_simple(x1,y1,x2,y2)
                     x = sumar(x);
                     y = sumar(y);
                     ctx.fillRect(x,y,1,1);
-                    i=i+1;   
-                } 
+                    i=i+1;
+                }
         	}
         }
     }
@@ -713,7 +713,7 @@ function add_simple(x1,y1,x2,y2)
         document.getElementById("numx2").value = "";
         document.getElementById("numy2").value = "";
     }
-}  
+}
 
 function draw_circle(xc,yc,r){
 
@@ -740,7 +740,7 @@ function draw_circle(xc,yc,r){
 
         ctx.fillRect(x,y,1,1);
     };
-}    
+}
 
 function draw_parameters_polar(xc,yc,r){
     var canvas = document.getElementById("canvas");
@@ -788,8 +788,8 @@ function draw_parameters_increment(xc,yc,r){
 
         var x = x + r2*Math.cos(alpha);
         var y = y + r2*Math.sin(alpha);
-        
-        
+
+
         ctx.fillRect(x,y,1,1);
     };
 
@@ -806,23 +806,23 @@ function draw_square(xmin,ymin,xmax,ymax){
 
     //Recta vertical izquierda
     ctx.moveTo(xmin,ymin);
-    ctx.lineTo(xmin,ymax);  
+    ctx.lineTo(xmin,ymax);
     ctx.stroke();
 
     //Recta horizontal izquierda
     ctx.moveTo(xmin,ymin);
-    ctx.lineTo(xmax,ymin);  
+    ctx.lineTo(xmax,ymin);
     ctx.stroke();
 
     //Recta vertical derecha
     ctx.moveTo(xmax,ymin);
-    ctx.lineTo(xmax,ymax);  
+    ctx.lineTo(xmax,ymax);
     ctx.stroke();
     ctx.closePath();
 
     //Recta horizontal derecha
     ctx.moveTo(xmin,ymax);
-    ctx.lineTo(xmax,ymax);  
+    ctx.lineTo(xmax,ymax);
     ctx.stroke();
     ctx.closePath();
 
@@ -835,9 +835,9 @@ function add_entero(x1,y1,x2,y2)
     x1 = Number(x1);
     y1 = Number(y1);
     x2 = Number(x2);
-    y2 = Number(y2); 
+    y2 = Number(y2);
 
-    
+
 
         var dif_x = x2-x1;
         var dif_y = y2-y1;
@@ -861,10 +861,10 @@ function add_entero(x1,y1,x2,y2)
             		var canvas = document.getElementById("canvas");
                     var ctx = canvas.getContext("2d");
                     ctx.fillStyle = "red";
-                    
+
                     x1 = x;
                     y1 = y;
-                    
+
                     ctx.fillRect(x,y,1,1);
             	}
             	else
@@ -875,10 +875,10 @@ function add_entero(x1,y1,x2,y2)
             		var canvas = document.getElementById("canvas");
                     var ctx = canvas.getContext("2d");
                     ctx.fillStyle = "red";
-                    
+
                     x1 = x;
                     y1 = y;
-                    
+
                     ctx.fillRect(x,y,1,1);
             	}
             }
@@ -893,10 +893,10 @@ function add_entero(x1,y1,x2,y2)
             		var canvas = document.getElementById("canvas");
                     var ctx = canvas.getContext("2d");
                     ctx.fillStyle = "red";
-                    
+
                     x1 = x;
                     y1 = y;
-                    
+
                     ctx.fillRect(x,y,1,1);
             	}
             	else
@@ -907,10 +907,10 @@ function add_entero(x1,y1,x2,y2)
             		var canvas = document.getElementById("canvas");
                     var ctx = canvas.getContext("2d");
                     ctx.fillStyle = "red";
-                    
+
                     x1 = x;
                     y1 = y;
-                    
+
                     ctx.fillRect(x,y,1,1);
             	}
             }
@@ -925,7 +925,7 @@ function add_entero(x1,y1,x2,y2)
             		var canvas = document.getElementById("canvas");
                     var ctx = canvas.getContext("2d");
                     ctx.fillStyle = "red";
-                    
+
                     x1 = x;
                     y1 = y;
 
@@ -939,10 +939,10 @@ function add_entero(x1,y1,x2,y2)
             		var canvas = document.getElementById("canvas");
                     var ctx = canvas.getContext("2d");
                     ctx.fillStyle = "red";
-                    
+
                     x1 = x;
                     y1 = y;
-                    
+
                     ctx.fillRect(x,y,1,1);
             	}
             }
@@ -957,10 +957,10 @@ function add_entero(x1,y1,x2,y2)
             		var canvas = document.getElementById("canvas");
                     var ctx = canvas.getContext("2d");
                     ctx.fillStyle = "red";
-                    
+
                     x1 = x;
                     y1 = y;
-                    
+
                     ctx.fillRect(x,y,1,1);
             	}
             	else
@@ -974,11 +974,11 @@ function add_entero(x1,y1,x2,y2)
 
                     x1 = x;
                     y1 = y;
-          
+
                     ctx.fillRect(x,y,1,1);
             	}
             }
             i++;
         }
-    
-}      
+
+}
