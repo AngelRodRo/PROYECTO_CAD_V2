@@ -3,7 +3,7 @@ function Polygon(points,ctx){
 	this.ctx = ctx;
 }
 
-Polygon.prototype.move=function(x,y){
+Polygon.prototype.move=function(H,V){
 
 	var pointsDistance=[];
 	var xmove;
@@ -13,22 +13,22 @@ Polygon.prototype.move=function(x,y){
 
 	for (var i = 0; i < this.points.length; i++) {
 
-		distancex = this.points[i].x-this.points[0].x;
-		distancey = this.points[i].y-this.points[0].y;
+		this.points[i].x = this.points[i].x+H;
+		this.points[i].y = this.points[i].y+V;
 
-		pointsDistance.push({
-			x:distancex,
-			y:distancey
-		});
+		// pointsDistance.push({
+		// 	x:distancex,
+		// 	y:distancey
+		// });
 	}
 
-	this.points[0].x = x;
-	this.points[0].y = y;
-
-	for (var i = 0; i < this.points.length; i++) {
-		this.points[i].x = x+pointsDistance[i].x;
-		this.points[i].y = y+pointsDistance[i].y;
-	}
+	// this.points[0].x = x;
+	// this.points[0].y = y;
+	//
+	// for (var i = 0; i < this.points.length; i++) {
+	// 	this.points[i].x = x+pointsDistance[i].x;
+	// 	this.points[i].y = y+pointsDistance[i].y;
+	// }
 
 	this.draw();
 }

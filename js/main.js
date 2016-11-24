@@ -231,6 +231,15 @@ $(function(){
 		$("#angle").val("");
 	});
 
+	$(".move").click(function () {
+		var V = Number($("[name='V']").val());
+		var H = Number($("[name='H']").val());
+		debugger;
+		clearScreen(c,ctx);
+		polygons[0].move(H,V);
+
+
+	});
 
 	$("#btn_move").click(function(){
 		if(drawn){
